@@ -8,6 +8,19 @@ try{
 }catch(e){}
 
 gsap.registerPlugin(ScrollTrigger);
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const targetId = link.getAttribute('href');
+    const target = document.querySelector(targetId);
+    if (!target) return;
+    e.preventDefault();
+    if (lenis) {
+      lenis.scrollTo(target, { duration: 1.4 });
+    } else {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
 
 /* ---------- Nav scroll state ---------- */
 const nav = document.getElementById('nav');
