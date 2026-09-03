@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanyakumari Travel Guide | Explore India's Southernmost Destination</title>
+<meta name="description" content="Explore Kanyakumari — its history, temples, beaches, Vivekananda Rock Memorial, Thiruvalluvar Statue, Padmanabhapuram Palace and unforgettable coastal experiences.">
+<meta property="og:title" content="Kanyakumari — Where Three Seas Meet">
+<meta property="og:description" content="An emotional digital journey through India's southernmost tip — history, spirituality, ocean and Tamil culture.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor" id="cursor"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="brand">KANYAKUMARI</div>
+  <div class="links">
+    <a href="#seas">Explore</a>
+    <a href="#history">History</a>
+    <a href="#icons">Places</a>
+    <a href="#culture">Culture</a>
+    <a href="#itineraries">Itineraries</a>
+    <a href="#map">Map</a>
+  </div>
+  <a href="#plan" class="plan-btn">Plan Trip</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="assets/kanya.jpeg" alt="Vivekananda Rock Memorial rising from the sea at Kanyakumari, with the Pamban-style causeway bridge in the foreground" id="heroImg">
+  </div>
+  <div class="hero-mist"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal" id="r1">India's Southernmost Point</div>
+    <h1 class="reveal" id="r2">Kanyakumari</h1>
+    <p class="hero-sub reveal" id="r3">At India's southernmost edge, where the Arabian Sea, Bay of Bengal and Indian Ocean converge, history meets the horizon.</p>
+    <div class="hero-actions reveal" id="r4">
+      <a href="#icons" class="btn btn-primary">Explore Kanyakumari</a>
+      <a href="#plan" class="btn btn-ghost">Plan Your Journey</a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="line"></div>Scroll to explore</div>
+</header>
+
+<!-- ============ THREE SEAS ============ -->
+<section class="seas section-pad" id="seas">
+  <div class="container seas-head">
+    <div class="label">Three Seas. One Horizon.</div>
+    <h2 class="display reveal">A geography found nowhere else on Earth</h2>
+    <p class="lede reveal">Kanyakumari sits at the exact point where three great bodies of water meet — a confluence you can watch happen in real time, from the same stretch of rock.</p>
+  </div>
+  <div class="seas-grid container" style="padding:0;max-width:1320px;">
+    <div class="sea-card reveal">
+      <div class="sea-orb" style="background:linear-gradient(135deg,#134a68,#2f7ca3);"></div>
+      <div class="num">West</div>
+      <h3>Arabian Sea</h3>
+      <p>Warm, turquoise waters that carried spice traders for two thousand years — still the calmest of the three at dawn.</p>
+    </div>
+    <div class="sea-card reveal">
+      <div class="sea-orb" style="background:linear-gradient(135deg,#0d2c40,#134a68);"></div>
+      <div class="num">East</div>
+      <h3>Bay of Bengal</h3>
+      <p>Deeper and darker, the Bay brings the monsoon swells that shape Kanyakumari's dramatic coastal weather.</p>
+    </div>
+    <div class="sea-card reveal">
+      <div class="sea-orb" style="background:linear-gradient(135deg,#c7a35d,#d2713a);"></div>
+      <div class="num">South</div>
+      <h3>Indian Ocean</h3>
+      <p>The open water beyond — nothing but horizon until Antarctica. This is the view the sunrise climbs out of.</p>
+    </div>
+  </div>
+  <div class="meeting">
+    <div class="label" style="justify-content:center;display:flex;">The Confluence</div>
+    <svg viewBox="0 0 600 260" fill="none">
+      <circle cx="300" cy="150" r="6" fill="#c7a35d"/>
+      <path id="pathA" d="M60 60 Q 180 100 300 150" stroke="#2f7ca3" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <path id="pathB" d="M540 60 Q 420 100 300 150" stroke="#c7a35d" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <path id="pathC" d="M300 240 Q 300 195 300 150" stroke="#d2713a" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <text x="30" y="45" fill="#e9dfc8" font-size="13" font-family="Inter">Arabian Sea</text>
+      <text x="450" y="45" fill="#e9dfc8" font-size="13" font-family="Inter">Bay of Bengal</text>
+      <text x="252" y="256" fill="#e9dfc8" font-size="13" font-family="Inter">Indian Ocean</text>
+    </svg>
+    <div class="cap">Three currents. One southernmost point.</div>
+  </div>
+</section>
+
+<!-- ============ HISTORY TIMELINE ============ -->
+<section class="timeline-wrap" id="history">
+  <div class="container">
+    <div class="label">A Land Shaped by Time</div>
+    <h2 class="display reveal">Centuries of kingdoms, saints and seafarers</h2>
+  </div>
+  <div class="timeline container">
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">Antiquity</div><h3>Ancient Tamil Kingdoms</h3><p>Long before recorded empires, Kanyakumari was a meeting point of Tamil trade routes, its temples and ports referenced in the earliest Sangam-era literature.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">c. 6th–14th c.</div><h3>Pandya Heritage</h3><p>Under Pandya rule, the region's temple architecture and maritime trade flourished, laying the cultural foundation still visible in local craftsmanship.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">18th–19th c.</div><h3>Travancore Era</h3><p>Kanyakumari became part of the Kingdom of Travancore, gaining palaces, forts and administrative structures — including Padmanabhapuram, its former capital.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1892</div><h3>Swami Vivekananda</h3><p>The monk swam to the twin rocks off the coast and meditated for three days, an act that gave the memorial its name and its spiritual weight.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1947</div><h3>Indian Independence</h3><p>As princely states merged into the new republic, the region's identity began shifting from royal territory to a shared national landmark.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1956</div><h3>Kanyakumari District</h3><p>Formed as a distinct district of Tamil Nadu, consolidating its towns, temples and coastline under one administrative identity.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">Today</div><h3>Modern Kanyakumari</h3><p>A living town where fishing boats, temple bells and sunrise crowds share the same short stretch of coastline every morning.</p></div>
+  </div>
+</section>
+
+<!-- ============ CULTURE & SPIRITUALITY ============ -->
+<section id="culture">
+  <div class="culture-block dark">
+    <div class="culture-media"><img src="https://s7ap1.scene7.com/is/image/incredibleindia/kumari-amman-temple-kanyakumari-tamil-nadu-4-new-attr-about-1?qlt=82&ts=1726655170673" alt="Kumari Amman Temple gopuram against the evening sky" loading="lazy"></div>
+    <div class="culture-text">
+      <div class="label">Culture &amp; Spirituality</div>
+      <h3>Kumari Amman Temple</h3>
+      <p>Dedicated to the virgin goddess Kanya Devi, this shrine gives the town its name. Pilgrims arrive before sunrise, believing the goddess herself faces the point where the three seas meet.</p>
+    </div>
+  </div>
+  <div class="culture-block dark">
+    <div class="culture-media"><img src="https://visitplacesindia.com/wp-content/uploads/2024/11/thanumalayan-suchindram-anjaneyar-temple-kanyakumari.jpg" alt="Ornately carved stone pillars inside a South Indian temple" loading="lazy"></div>
+    <div class="culture-text">
+      <div class="label">Architecture</div>
+      <h3>Suchindram Thanumalayan Temple</h3>
+      <p>A short drive inland, this temple hides one of Tamil Nadu's engineering wonders: musical pillars carved from single blocks of granite, each tuned to a different note.</p>
+      <ul>
+        <li>Sculptural gopuram rising over seven tiers</li>
+        <li>Musical stone pillars, struck to produce tone</li>
+        <li>Continuous worship for over a thousand years</li>
+      </ul>
+    </div>
+  </div>
+  <div class="culture-block dark">
+    <div class="culture-media"><img src="assets/vivekananda rock.jpeg" alt="Vivekananda Rock Memorial surrounded by open ocean" loading="lazy"></div>
+    <div class="culture-text">
+      <div class="label">Spirituality</div>
+      <h3>Vivekananda Rock Memorial</h3>
+      <p>Reachable only by ferry, the memorial marks the rock where Swami Vivekananda meditated in 1892 before departing to represent Hinduism at Chicago's Parliament of Religions — a turning point for modern Indian spiritual thought.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ICONS OF KANYAKUMARI ============ -->
+<section class="section-pad" id="icons">
+  <div class="container">
+    <div class="label">Icons of Kanyakumari</div>
+    <h2 class="display reveal">The landmarks that define the skyline</h2>
+  </div>
+  <div class="icons-grid" style="margin-top:60px;">
+    <a class="icon-card" href="#">
+      <img src="assets/vivekananda rock2.jpeg" alt="Vivekananda Rock Memorial">
+      <div class="icon-card-text"><div class="tag">Meditation above the ocean</div><h3>Vivekananda Rock Memorial</h3></div>
+    </a>
+    <a class="icon-card" href="#">
+      <img src="assets/thrivalluvar statue2.jpeg" alt="Thiruvalluvar Statue viewed from the sea">
+      <div class="icon-card-text"><div class="tag">A monument to Tamil wisdom</div><h3>Thiruvalluvar Statue</h3></div>
+    </a>
+    <a class="icon-card" href="#">
+      <img src="https://kanyakumaritourism.in/images/places-to-visit/headers/mahatma-gandhi-memorial-mandapam-kanyakumari-tourism-entry-fee-timings-holidays-reviews-header.jpg" alt="Coastal memorial building by the sea">
+      <div class="icon-card-text"><div class="tag">A memory preserved by the sea</div><h3>Gandhi Memorial</h3></div>
+    </a>
+    <a class="icon-card" href="#">
+      <img src="https://www.kanyakumarians.com/data/catalog/Vattakottai/Karthik-Prasad-Vittla.jpg" alt="Old coastal stone fort walls">
+      <div class="icon-card-text"><div class="tag">Travancore's coastal guardian</div><h3>Vattakottai Fort</h3></div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ SUNRISE / SUNSET ============ -->
+<section>
+  <div class="split">
+    <div class="split-panel">
+      <img src="https://cdn.dollsofindia.com/images/p/photography/sunrise-at-kanyakumari-CE74_l.jpg" alt="Golden sunrise over the ocean at Kanyakumari">
+      <div class="sp-text"><div class="label">Sunrise</div><h3>Wake before the sky does</h3></div>
+    </div>
+    <div class="split-panel">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cape_may.jpg/500px-Cape_may.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" alt="Warm sunset colors over the coastline">
+      <div class="sp-text" style="text-align:right;"><div class="label">Sunset</div><h3>Stay for the last light</h3></div>
+    </div>
+    <div class="split-center">
+      <div class="sun" id="travellingSun"></div>
+      <p>One day. Two horizons.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROYAL HERITAGE ============ -->
+<section class="palace">
+  <div class="container palace-head">
+    <div class="label">Royal Heritage</div>
+    <h2 class="display reveal">Padmanabhapuram Palace</h2>
+    <p class="lede reveal">The former capital of Travancore — an entirely wooden palace complex of teak corridors, murals and courtyards, still standing after four centuries.</p>
+  </div>
+  <div class="container palace-gallery">
+    <a href="#"><img src="https://trivandrumtourism.in/images/places-to-visit/headers/padmanabhapuram-palace-trivandrum-tourism-entry-fee-timings-holidays-reviews-header.jpg" alt="Traditional carved wooden architecture" loading="lazy"></a>
+    <a href="#"><img src="https://s7ap1.scene7.com/is/image/incredibleindia/1-padmanabhapuram-palace-kanyakumari-tamil-nadu-attr-hero?qlt=82&ts=1726654332546" alt="Palace corridor with wooden pillars" loading="lazy"></a>
+    <a href="#"><img src="https://live.staticflickr.com/418/19137229953_386b1c7f93_b.jpg" alt="Sunlit courtyard in a heritage palace" loading="lazy"></a>
+    <a href="#"><img src="https://cdn1.tripoto.com/media/filter/nl/img/2380291/Image/1706877817_19123630494_72eac355be_b.jpg.webp" alt="Ornate royal chamber interior" loading="lazy"></a>
+    <a href="#"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/82/90/85/caption.jpg?w=1200&h=-1&s=1" alt="Detail of traditional woodworking craftsmanship" loading="lazy"></a>
+  </div>
+</section>
+
+<!-- ============ HIDDEN KANYAKUMARI ============ -->
+<section class="hidden-sec">
+  <div class="container">
+    <div class="label">Beyond the Postcard</div>
+    <h2 class="display reveal">Go beyond the postcard.</h2>
+  </div>
+  <div class="hscroll" style="margin-top:50px;">
+    <div class="hcard"><img src="assets/muttom beach.jpeg" alt="Quiet Muttom Beach at low tide" loading="lazy"><div class="hcard-text"><div class="tag">Coastal</div><h4>Muttom Beach</h4></div></div>
+    <div class="hcard"><img src="https://media.tripinvites.com/places/kanyakumari/sanguthurai-beach/sanguthurai-beach-featured-400x400.webp" alt="Rocky shoreline at Chothavilai Beach" loading="lazy"><div class="hcard-text"><div class="tag">Rock Pools</div><h4>Chothavilai Beach</h4></div></div>
+    <div class="hcard"><img src="assets/thirparappu water falls.jpeg" alt="Thirparappu waterfalls cascading over rock" loading="lazy"><div class="hcard-text"><div class="tag">Waterfall</div><h4>Thirparappu Waterfalls</h4></div></div>
+    <div class="hcard"><img src="https://pbs.twimg.com/media/ENBtm69VUAAWVyS.jpg" alt="Vattakottai Fort walls facing the sea" loading="lazy"><div class="hcard-text"><div class="tag">Fort</div><h4>Vattakottai Fort</h4></div></div>
+    <div class="hcard"><img src="assets/coastal village.jpeg" alt="Rural coastal landscape with palm trees" loading="lazy"><div class="hcard-text"><div class="tag">Countryside</div><h4>Coastal Villages</h4></div></div>
+  </div>
+  <div class="hscroll-hint container">Drag to explore →</div>
+</section>
+
+<!-- ============ MAP ============ -->
+<section class="map-sec" id="map-section">
+  <div class="container">
+    <div class="label">Find Your Way</div>
+    <h2 class="display reveal">Every landmark, mapped</h2>
+    <div id="map"></div>
+  </div>
+</section>
+
+<!-- ============ ITINERARIES ============ -->
+<section class="itin-sec" id="itineraries">
+  <div class="container">
+    <div class="label">Travel Itineraries</div>
+    <h2 class="display reveal">However long you have</h2>
+  </div>
+  <div class="itin-grid container" style="padding-left:6vw;padding-right:6vw;max-width:none;">
+    <div class="itin-card" data-i="0"><div class="days">1<span>day</span></div><h4>Kanyakumari Essentials</h4><p>The Rock Memorial, Thiruvalluvar Statue and sunset at the shoreline.</p>
+      <div class="itin-detail">Places: Vivekananda Rock, Thiruvalluvar Statue, Kumari Amman Temple · Distance: ~5 km · Transport: Walking + ferry · Food stop: Beach Road seafood stalls · Photo spot: Ferry point at golden hour</div></div>
+    <div class="itin-card" data-i="1"><div class="days">2<span>days</span></div><h4>History &amp; Coast</h4><p>Add Vattakottai Fort and Suchindram's musical pillars.</p>
+      <div class="itin-detail">Places: Day 1 essentials + Vattakottai Fort, Suchindram Temple · Distance: ~35 km · Transport: Auto or taxi · Food stop: Suchindram village thattu kadais · Photo spot: Fort ramparts at dusk</div></div>
+    <div class="itin-card" data-i="2"><div class="days">3<span>days</span></div><h4>Complete Kanyakumari</h4><p>Padmanabhapuram Palace and the hidden beaches beyond town.</p>
+      <div class="itin-detail">Places: Above + Padmanabhapuram Palace, Muttom Beach · Distance: ~70 km · Transport: Private car recommended · Food stop: Palace-road appam shops · Photo spot: Muttom lighthouse at sunrise</div></div>
+    <div class="itin-card" data-i="3"><div class="days">5<span>days</span></div><h4>Deep South Tamil Nadu</h4><p>Waterfalls, coastal villages and a slower, fuller circuit.</p>
+      <div class="itin-detail">Places: Full circuit + Thirparappu Waterfalls, Chothavilai Beach, rural villages · Distance: ~150 km · Transport: Multi-day car hire · Food stop: Village home-cooked meals · Photo spot: Thirparappu falls midday mist</div></div>
+  </div>
+</section>
+
+<!-- ============ FOOD ============ -->
+<section class="food-sec">
+  <div class="container">
+    <div class="label">Taste the South</div>
+    <h2 class="display reveal">Flavors carried by the coast</h2>
+  </div>
+  <div class="food-grid container" style="padding:0;max-width:1320px;">
+    <div class="food-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdusLnLjc8oG2I_IOpJrg-xwXJsYGHCtUNUsnC0tWh3yrr3gifttjccuU&s=10" alt="Grilled coastal seafood platter" loading="lazy"><span>Fresh Seafood</span></div>
+    <div class="food-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Xr7uhPvfHGyx90NmXu7QnZEoxqcymAkV96b-31w-eg&s=10" alt="Layered Kerala-style parotta" loading="lazy"><span>Parotta</span></div>
+    <div class="food-item"><img src="https://www.foodiaq.com/wp-content/uploads/2024/11/appam-with-egg.jpg" alt="Soft appam with a fluffy center" loading="lazy"><span>Appam</span></div>
+    <div class="food-item"><img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80" alt="South Indian breakfast platter with sambar and chutney" loading="lazy"><span>South Indian Breakfast</span></div>
+  </div>
+</section>
+
+<!-- ============ PHOTOGRAPHY ============ -->
+<section class="photo-sec">
+  <div class="container">
+    <div class="label">Photographer's Kanyakumari</div>
+    <h2 class="display reveal">Where and when to shoot</h2>
+  </div>
+  <div class="photo-grid container" style="padding:0;max-width:1320px;">
+    <div class="photo-card"><div class="ic">🌅</div><h4>Best Sunrise</h4><p>Shungavarkatte viewpoint faces due east across open ocean.</p><div class="time">5:50 – 6:20 AM</div></div>
+    <div class="photo-card"><div class="ic">🌇</div><h4>Best Sunset</h4><p>The western promenade near the harbor catches full color.</p><div class="time">6:00 – 6:30 PM</div></div>
+    <div class="photo-card"><div class="ic">🌊</div><h4>Best Coastal View</h4><p>The ferry crossing offers a rare mid-ocean vantage.</p><div class="time">Any clear morning</div></div>
+    <div class="photo-card"><div class="ic">🏛️</div><h4>Best Architecture</h4><p>Suchindram's gopuram, lit low, just after opening.</p><div class="time">6:30 – 7:30 AM</div></div>
+    <div class="photo-card"><div class="ic">📷</div><h4>Best Instagram Spot</h4><p>The causeway bridge with the memorial rising behind.</p><div class="time">Golden hour</div></div>
+    <div class="photo-card"><div class="ic">🌴</div><h4>Best Nature Spot</h4><p>Thirparappu's mist catches light beautifully at midday.</p><div class="time">12:00 – 1:00 PM</div></div>
+  </div>
+</section>
+
+<!-- ============ SEASONS ============ -->
+<section class="season-sec">
+  <div class="container">
+    <div class="label">Best Time to Visit</div>
+    <h2 class="display reveal">Three seasons, three moods</h2>
+  </div>
+  <div class="season-grid container" style="padding:0;max-width:1320px;">
+    <div class="season-card"><div class="range">Oct – Mar</div><h4>☀️ Best overall experience</h4><p>Cool, dry and clear — ideal for both sunrise views and long coastal walks.</p></div>
+    <div class="season-card"><div class="range">Apr – Jun</div><h4>🏖️ Summer &amp; coastal exploration</h4><p>Warmer days suited to early mornings and evening beach time.</p></div>
+    <div class="season-card"><div class="range">Jul – Sep</div><h4>🌧️ Monsoon atmosphere</h4><p>Dramatic skies and rougher seas — fewer crowds, moodier photography.</p></div>
+  </div>
+</section>
+
+<!-- ============ BUDGET CALCULATOR ============ -->
+<section class="budget-sec" id="plan">
+  <div class="container">
+    <div class="label">Plan Your Trip</div>
+    <h2 class="display reveal">Estimate your budget</h2>
+    <div class="budget-box">
+      <div class="budget-inputs">
+        <label for="travelers">Number of travelers — <span id="travelersVal">2</span></label>
+        <input type="range" id="travelers" min="1" max="10" value="2">
+        <label for="days">Number of days — <span id="daysVal">3</span></label>
+        <input type="range" id="days" min="1" max="10" value="3">
+        <label>Travel style</label>
+        <div class="style-toggle">
+          <button data-style="budget" class="active">Budget</button>
+          <button data-style="comfort">Comfort</button>
+          <button data-style="luxury">Luxury</button>
+        </div>
+      </div>
+      <div class="budget-output">
+        <div class="budget-row"><span>Transport</span><span id="outTransport">₹0</span></div>
+        <div class="budget-row"><span>Hotel</span><span id="outHotel">₹0</span></div>
+        <div class="budget-row"><span>Food</span><span id="outFood">₹0</span></div>
+        <div class="budget-row"><span>Activities</span><span id="outActivities">₹0</span></div>
+        <div class="budget-total"><span>Estimated Total</span><span id="outTotal">₹0</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GETTING THERE ============ -->
+<section class="transit-sec">
+  <div class="container">
+    <div class="label">Getting There</div>
+    <h2 class="display reveal">Three ways in</h2>
+  </div>
+  <div class="transit-grid container" style="padding:0;max-width:1320px;">
+    <div class="transit-card"><div class="ic">✈️</div><h4>By Air</h4><p>Trivandrum International Airport is the nearest, roughly 90 km away, with regular connections to major Indian cities.</p></div>
+    <div class="transit-card"><div class="ic">🚆</div><h4>By Train</h4><p>Kanyakumari Railway Station is the terminus itself, with direct trains from Chennai, Bengaluru and Delhi.</p></div>
+    <div class="transit-card"><div class="ic">🚗</div><h4>By Road</h4><p>Well-connected via NH66 and NH44 from Trivandrum, Madurai and Nagercoil, with scenic coastal stretches along the way.</p></div>
+  </div>
+</section>
+
+<!-- ============ FINALE ============ -->
+<section class="finale">
+  <div class="finale-bg"></div>
+  <div style="position:relative;z-index:2;">
+    <h2 class="reveal">Not just the end of India.</h2>
+    <div class="arrow-text reveal" style="font-family:'Fraunces',serif;font-style:italic;">The beginning of a journey.</div>
+    <p class="reveal">Come for the horizon. Stay for the history. Leave with a story.</p>
+    <a href="#hero" class="btn btn-primary reveal">Start Exploring →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">KANYAKUMARI</div>
+    <div class="foot-links">
+      <a href="#seas">Explore</a>
+      <a href="#history">History</a>
+      <a href="#itineraries">Itineraries</a>
+      <a href="#map-section">Map</a>
+      <a href="#plan">Plan Trip</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>Kanyakumari, Tamil Nadu, India</span>
+    <span>Where three seas meet. Where stories begin.</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
