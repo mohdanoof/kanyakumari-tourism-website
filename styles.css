@@ -38,10 +38,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spa
 }
 
 /* cursor dot */
-.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);z-index:1000;pointer-events:none;
-  transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),background .25s;mix-blend-mode:difference;}
-.cursor.big{width:44px;height:44px;background:var(--sand);}
-@media (hover:none){.cursor{display:none;}}
 
 /* ============ NAV ============ */
 .nav{
