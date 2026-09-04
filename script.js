@@ -77,14 +77,7 @@ gsap.to('#travellingSun', {
 });
 
 /* ---------- Custom cursor ---------- */
-const cursor = document.getElementById('cursor');
-window.addEventListener('mousemove', e=>{
-  gsap.to(cursor, {x:e.clientX, y:e.clientY, duration:.15});
-});
-document.querySelectorAll('a, button, .hcard, .icon-card').forEach(el=>{
-  el.addEventListener('mouseenter', ()=>cursor.classList.add('big'));
-  el.addEventListener('mouseleave', ()=>cursor.classList.remove('big'));
-});
+
 
 /* ---------- Itinerary card expand ---------- */
 document.querySelectorAll('.itin-card').forEach(card=>{
